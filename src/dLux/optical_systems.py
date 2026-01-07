@@ -3,6 +3,7 @@ from collections import OrderedDict
 from abc import abstractmethod
 import jax.numpy as np
 from jax import Array
+import zodiax as zdx
 from zodiax import filter_vmap, Base
 from typing import Union, Any
 import dLux.utils as dlu
@@ -240,8 +241,8 @@ class ParametricOpticalSystem(OpticalSystem):
         The pixel scale of the final PSF.
     """
 
-    psf_npixels: int
-    oversample: int
+    psf_npixels: int = zdx.field(static=True)
+    oversample: int = zdx.field(static=True)
     psf_pixel_scale: float
 
     def __init__(
@@ -288,7 +289,7 @@ class LayeredOpticalSystem(OpticalSystem):
         A series of `OpticalLayer` transformations to apply to wavefronts.
     """
 
-    wf_npixels: int
+    wf_npixels: int = zdx.field(static=True)
     diameter: float
     layers: OrderedDict
 
