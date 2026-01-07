@@ -199,7 +199,7 @@ class BasisLayer(OpticalLayer):
 
     basis: Union[Array, list]
     coefficients: Array
-    as_phase: bool
+    as_phase: bool = zdx.field(static=True)
 
     # NOTE: We need the None basis input for aberrated apertures
     def __init__(
