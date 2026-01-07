@@ -2,6 +2,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Union
 import jax.numpy as np
+import zodiax as zdx
 from zodiax import Base
 from jax import Array
 import dLux.utils as dlu
@@ -66,7 +67,7 @@ class TransmissiveLayer(OpticalLayer):
     """
 
     transmission: Array
-    normalise: bool
+    normalise: bool = zdx.field(static=True)
 
     def __init__(
         self: OpticalLayer,
