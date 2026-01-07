@@ -1,5 +1,6 @@
 from __future__ import annotations
 import jax.numpy as np
+import zodiax as zdx
 from jax import Array
 
 
@@ -113,7 +114,7 @@ class MFT(Propagator):
         output pixel_scale has units radians/pixel, else meters/pixels.
     """
 
-    npixels: int
+    npixels: int = zdx.field(static=True)
     pixel_scale: float
 
     def __init__(
@@ -187,7 +188,7 @@ class ShiftedMFT(MFT):
     """
 
     shift: Array
-    pixel: bool
+    pixel: bool = zdx.field(static=True)
 
     def __init__(
         self: Propagator,
